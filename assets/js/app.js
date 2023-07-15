@@ -9,11 +9,14 @@ const pro = $("#progress");
 const next = $(".btn-next");
 const prev = $(".btn-prev");
 const randomBtn = $(".btn-random");
+const repeatBtn = $(".btn-repeat");
+const playlist = $(".playlist");
 // 1.Render song
 const app = {
   currentIndex: 0,
   isPlaying: false,
   isRandom: false,
+  isRepeat: false,
   songs: [
     {
       name: "Cà Phê",
@@ -77,8 +80,10 @@ const app = {
     },
   ],
   render: function () {
-    const htmls = this.songs.map((song) => {
-      return `<div class="song">
+    const htmls = this.songs.map((song, index) => {
+      return `<div class="song ${
+        index === this.currentIndex ? "active" : ""
+      }" data-index="${index}">
         <div class="thumb-song" style="background-image: url('${song.image}')">
         </div>
         <div class="body">
@@ -171,7 +176,10 @@ const app = {
       } else {
         _this.nextSong();
       }
+
       audio.play();
+      _this.render();
+      _this.scrollToActiveSong();
     };
 
     // Xử lí prev
@@ -182,12 +190,39 @@ const app = {
         _this.prevSong();
       }
       audio.play();
+      _this.render();
     };
 
     // Xử lý random
     randomBtn.onclick = function () {
       _this.isRandom = !_this.isRandom;
       randomBtn.classList.toggle("active", _this.isRandom);
+    };
+
+    // Xử lý next song khi audio ended
+    audio.onended = function () {
+      if (!_this.isRepeat) {
+        next.click();
+      } else {
+        audio.play();
+      }
+    };
+
+    // Xử lý song khi bấm nút repeat
+    repeatBtn.onclick = function () {
+      _this.isRepeat = !_this.isRepeat;
+      repeatBtn.classList.toggle("active", _this.isRepeat);
+    };
+
+    // Xử lí click song
+    playlist.onclick = function (e) {
+      const songNode = e.target.closest(".song:not(.active)");
+      if (songNode) {
+        _this.currentIndex = Number(songNode.dataset.index);
+        _this.loadCurrentSong();
+        _this.render();
+        audio.play();
+      }
     };
   },
 
@@ -217,6 +252,14 @@ const app = {
     } while (newIndex === this.currentIndex);
     this.currentIndex = newIndex;
     this.loadCurrentSong();
+  },
+  scrollToActiveSong: function () {
+    setTimeout(() => {
+      $(".song.active").scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 300);
   },
   start: function () {
     // Dịnh nghĩa các thuộc tính cho object

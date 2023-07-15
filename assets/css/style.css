@@ -206,6 +206,21 @@ input[type="range"]:focus::-ms-fill-upper {
   text-align: justify;
 }
 
+.song:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 1px 3px 11px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 3px 11px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 3px 11px -1px rgba(0, 0, 0, 0.75);
+}
+
+.song.active {
+  background: #8cb9f0;
+}
+
 .control .btn.active {
   color: #ec1f55;
+}
+
+.song:active {
+  opacity: 0.8;
 }

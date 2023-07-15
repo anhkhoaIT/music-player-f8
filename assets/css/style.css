@@ -79,10 +79,9 @@ body {
   justify-content: center;
 }
 
-.btn-toggle-play:hover {
+.btn:hover {
   border: none;
   outline: none;
-  background-color: #fff;
   cursor: pointer;
 }
 /* input range */
@@ -205,4 +204,8 @@ input[type="range"]:focus::-ms-fill-upper {
 .song .body {
   margin-left: 30px;
   text-align: justify;
+}
+
+.control .btn.active {
+  color: #ec1f55;
 }

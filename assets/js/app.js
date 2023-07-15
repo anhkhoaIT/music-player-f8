@@ -8,10 +8,12 @@ const playBtn = $(".btn-toggle-play");
 const pro = $("#progress");
 const next = $(".btn-next");
 const prev = $(".btn-prev");
+const randomBtn = $(".btn-random");
 // 1.Render song
 const app = {
   currentIndex: 0,
   isPlaying: false,
+  isRandom: false,
   songs: [
     {
       name: "Cà Phê",
@@ -164,14 +166,28 @@ const app = {
 
     // Xử lí next
     next.onclick = function () {
-      _this.nextSong();
+      if (_this.isRandom) {
+        _this.playRandomSong();
+      } else {
+        _this.nextSong();
+      }
       audio.play();
     };
 
     // Xử lí prev
     prev.onclick = function () {
-      _this.prevSong();
+      if (_this.isRandom) {
+        _this.playRandomSong();
+      } else {
+        _this.prevSong();
+      }
       audio.play();
+    };
+
+    // Xử lý random
+    randomBtn.onclick = function () {
+      _this.isRandom = !_this.isRandom;
+      randomBtn.classList.toggle("active", _this.isRandom);
     };
   },
 
@@ -192,6 +208,14 @@ const app = {
     if (this.currentIndex < 0) {
       this.currentIndex = this.songs.length - 1;
     }
+    this.loadCurrentSong();
+  },
+  playRandomSong: function () {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * this.songs.length);
+    } while (newIndex === this.currentIndex);
+    this.currentIndex = newIndex;
     this.loadCurrentSong();
   },
   start: function () {

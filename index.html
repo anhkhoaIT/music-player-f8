@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="player">
+      <!-- Dashboard -->
+      <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+          <h4>Now playing:</h4>
+          <h2>String 57th & 9th</h2>
+        </header>
+
+        <!-- CD -->
+        <div class="cd">
+          <div
+            class="thumb"
+            style="background-image: url('./assets/img/thumb.avif')"
+          ></div>
+        </div>
+
+        <!-- Control -->
+        <div class="control">
+          <div class="btn-repeat">
+            <i class="fas fa-redo-alt"></i>
+          </div>
+
+          <div class="btn-prev">
+            <i class="fas fa-step-backward"></i>
+          </div>
+
+          <div class="btn-toggle-play">
+            <i class="fas fa-play-circle icon-play"></i>
+            <i class="fas fa-pause-circle icon-pause"></i>
+          </div>
+
+          <div class="btn-next">
+            <i class="fas fa-step-forward"></i>
+          </div>
+
+          <div class="btn-random">
+            <i class="fas fa-random"></i>
+          </div>
+        </div>
+
+        <input
+          type="range"
+          id="progress"
+          value="0"
+          step="1"
+          min="0"
+          max="100"
+        />
+
+        <audio id="audio" src=""></audio>
+      </div>
+
+      <!-- Playlist -->
+      <div class="playlist"></div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>

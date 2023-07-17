@@ -191,6 +191,7 @@ const app = {
       }
       audio.play();
       _this.render();
+      _this.scrollToActiveSong();
     };
 
     // Xử lý random

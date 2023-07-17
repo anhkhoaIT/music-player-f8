@@ -11,6 +11,8 @@ const prev = $(".btn-prev");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
 const playlist = $(".playlist");
+const vol = $(".volume");
+const body = $("body");
 // 1.Render song
 const app = {
   currentIndex: 0,
@@ -225,6 +227,14 @@ const app = {
         audio.play();
       }
     };
+
+    // Xử lí volume
+    vol.oninput = function (e) {
+      audio.volume = e.target.value / 100;
+    };
+
+    // Load
+    
   },
 
   loadCurrentSong: function () {

@@ -17,11 +17,7 @@ body {
   margin-top: 14px;
   text-align: center;
   display: inline-block;
-  background-image: linear-gradient(
-    95.2deg,
-    rgba(173, 252, 234, 1) 26.8%,
-    rgba(192, 229, 246, 1) 64%
-  );
+  background: #d4f1d8;
   height: 100%;
   border-radius: 8px;
   width: 400px;
@@ -50,10 +46,17 @@ body {
   object-fit: cover;
   width: 150px;
   height: 150px;
+  background-size: cover;
 }
 
 .dashboard {
-  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  background: rgb(176, 246, 184);
+  background: linear-gradient(
+    90deg,
+    rgba(176, 246, 184, 1) 0%,
+    rgba(145, 242, 145, 1) 50%,
+    rgba(165, 246, 120, 1) 100%
+  );
   padding: 18px 30px;
   margin-top: -21px;
   border-radius: 8px;
@@ -67,7 +70,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  gap: 30px;
+  gap: 25px;
 }
 
 .btn-toggle-play {
@@ -89,16 +92,16 @@ body {
 #progress {
   background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
 }
-input[type="range"] {
+input[type="range"].pro {
   height: 17px;
   -webkit-appearance: none;
   margin: 10px 0;
   width: 100%;
 }
-input[type="range"]:focus {
+input[type="range"].pro:focus {
   outline: none;
 }
-input[type="range"]::-webkit-slider-runnable-track {
+input[type="range"].pro::-webkit-slider-runnable-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
@@ -108,7 +111,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 25px;
   border: 1px solid #8a8a8a;
 }
-input[type="range"]::-webkit-slider-thumb {
+input[type="range"].pro::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #828282;
   border: 1px solid #8a7780;
   height: 9px;
@@ -119,10 +122,10 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -0.5px;
 }
-input[type="range"]:focus::-webkit-slider-runnable-track {
+input[type="range"].pro:focus::-webkit-slider-runnable-track {
   background: #f0f0f0;
 }
-input[type="range"]::-moz-range-track {
+input[type="range"].pro::-moz-range-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
@@ -132,7 +135,7 @@ input[type="range"]::-moz-range-track {
   border-radius: 25px;
   border: 1px solid #8a8a8a;
 }
-input[type="range"]::-moz-range-thumb {
+input[type="range"].pro::-moz-range-thumb {
   box-shadow: 1px 1px 1px #828282;
   border: 1px solid #8a7780;
   height: 9px;
@@ -141,7 +144,7 @@ input[type="range"]::-moz-range-thumb {
   background: #f5168d;
   cursor: pointer;
 }
-input[type="range"]::-ms-track {
+input[type="range"].pro::-ms-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
@@ -150,19 +153,19 @@ input[type="range"]::-ms-track {
   border-color: transparent;
   color: transparent;
 }
-input[type="range"]::-ms-fill-lower {
+input[type="range"].pro::-ms-fill-lower {
   background: #f0f0f0;
   border: 1px solid #8a8a8a;
   border-radius: 50px;
   box-shadow: 0px 0px 0px #000000;
 }
-input[type="range"]::-ms-fill-upper {
+input[type="range"].pro::-ms-fill-upper {
   background: #f0f0f0;
   border: 1px solid #8a8a8a;
   border-radius: 50px;
   box-shadow: 0px 0px 0px #000000;
 }
-input[type="range"]::-ms-thumb {
+input[type="range"].pro::-ms-thumb {
   margin-top: 1px;
   box-shadow: 1px 1px 1px #828282;
   border: 1px solid #8a7780;
@@ -172,10 +175,10 @@ input[type="range"]::-ms-thumb {
   background: #f5168d;
   cursor: pointer;
 }
-input[type="range"]:focus::-ms-fill-lower {
+input[type="range"].pro:focus::-ms-fill-lower {
   background: #f0f0f0;
 }
-input[type="range"]:focus::-ms-fill-upper {
+input[type="range"].pro:focus::-ms-fill-upper {
   background: #f0f0f0;
 }
 
@@ -188,7 +191,7 @@ input[type="range"]:focus::-ms-fill-upper {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  background-color: rgb(242, 250, 247);
+  background: #f3f9f4;
   padding: 8px 16px;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
@@ -199,6 +202,7 @@ input[type="range"]:focus::-ms-fill-upper {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  background-size: cover;
 }
 
 .song .body {
@@ -220,7 +224,37 @@ input[type="range"]:focus::-ms-fill-upper {
 .control .btn.active {
   color: #ec1f55;
 }
-
 .song:active {
+  opacity: 0.8;
+}
+
+.btn-vol {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-vol i:hover,
+.volume:hover {
+  cursor: pointer;
+}
+
+.btn-vol .volume {
+  background: transparent;
+  width: 29%;
+  color: #000000;
+}
+
+.bg-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
   opacity: 0.8;
 }

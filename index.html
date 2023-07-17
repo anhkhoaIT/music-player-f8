@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <video
+      autoplay
+      loop
+      muted
+      src="./assets/video/background.mp4"
+      class="bg-video"
+    ></video>
     <div class="player">
       <!-- Dashboard -->
       <div class="dashboard">
@@ -53,7 +60,18 @@
             <i class="fas fa-random"></i>
           </div>
         </div>
-
+        <div class="btn-vol">
+          <i class="fas fa-volume-up"></i>
+          <input
+            type="range"
+            name="volume"
+            class="volume"
+            value="100"
+            step="1"
+            min="0"
+            max="100"
+          />
+        </div>
         <input
           type="range"
           id="progress"
@@ -61,6 +79,7 @@
           step="1"
           min="0"
           max="100"
+          class="pro"
         />
 
         <audio id="audio" src=""></audio>

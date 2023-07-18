@@ -80,6 +80,12 @@ const app = {
       path: "./assets/music/song-10.mp3",
       image: "./assets/img/song-10.jpg",
     },
+    {
+      name: "Head in the cloud",
+      singer: "Hayd",
+      path: "./assets/music/head_in_the_cloud.mp3",
+      image: "./assets/img/head_in_the_cloud.webp",
+    },
   ],
   render: function () {
     const htmls = this.songs.map((song, index) => {
@@ -234,7 +240,6 @@ const app = {
     };
 
     // Load
-    
   },
 
   loadCurrentSong: function () {
